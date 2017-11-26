@@ -2,6 +2,23 @@
 [![codecov](https://codecov.io/gh/francoispqt/instagram-node-client/branch/master/graph/badge.svg)](https://codecov.io/gh/francoispqt/instagram-node-client)
 [![Build Status](https://travis-ci.org/francoispqt/instagram-node-client.svg?branch=master)](https://travis-ci.org/francoispqt/instagram-node-client)
 
+## Get started
+Add instagram-client to your project
+```bash
+npm i instagram-client
+```
+
+Use the instagram client
+```js
+const Instagram = require("instagram-client").v1
+const Client = new Instagram({
+    CLIENT_ID: process.env.CLIENT_ID,
+    CLIENT_SECRET: process.env.CLIENT_SECRET,
+})
+``` 
+
+# API
+
 ## Classes
 
 <dl>
