@@ -5,6 +5,7 @@
 const Instagram = require("../../../").v1
 const endpoints = require("./endpoints")
 const testUtils = require("../../utils/test_utils")
+const errors = require("../../../lib/errors")
 
 const chai = require("chai")
 const expect = chai.expect
@@ -99,6 +100,32 @@ module.exports = function() {
                     done()
                 })
                 .catch(done)
+        })
+    })
+
+    describe("#errors.ResponseError", () => {
+        it("Should set the error message accordingly", () => {
+            const testErrorMessage = "test error message"
+            const err = new errors.ResponseError({
+                body: {
+                    meta: {
+                        error_message: testErrorMessage
+                    }
+                }
+            })
+
+            expect(err.message).to.equal(testErrorMessage)
+        })
+
+        it("Should set the error message accordingly", () => {
+            const testErrorMessage = "test error message"
+            const err = new errors.ResponseError({
+                body: {
+                    error_message: testErrorMessage
+                }
+            })
+
+            expect(err.message).to.equal(testErrorMessage)
         })
     })
 
