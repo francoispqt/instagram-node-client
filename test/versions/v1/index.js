@@ -2,7 +2,7 @@
  * Test for version 1 of the Instagram API
  * Creates a new client for v1 and a starts a new mock for v1
  */
-const Instagram = require("../../../").v1
+const Instagram = require("../../../lib").v1
 const endpoints = require("./endpoints")
 const testUtils = require("../../utils/test_utils")
 const errors = require("../../../lib/errors")
@@ -30,7 +30,7 @@ module.exports = function() {
                 })
                 .catch(error => {
                     expect(error).to.be.an.instanceof(
-                        Client.api.errors.ResponseError
+                        Error
                     )
                     done()
                 })
@@ -45,7 +45,7 @@ module.exports = function() {
                 (error, result) => {
                     try {
                         expect(error).to.be.an.instanceof(
-                            Client.api.errors.ResponseError
+                            Error
                         )
                         done()
                     } catch (error) {

@@ -13,9 +13,9 @@ module.exports = Client => {
             testUtils.stubApiRequest(Client)
             Client.oauth
                 .getAccessToken({
-                    grant_type: "code",
+                    grantType: "code",
                     code: "DUMMYCODE",
-                    redirect_uri: "https://heyhey.com",
+                    redirectURI: "https://heyhey.com",
                 })
                 .then(() => {
                     const callOpts = Client.api.call.getCall(0).args[0]
@@ -31,9 +31,9 @@ module.exports = Client => {
             testUtils.stubApiRequest(Client)
             Client.oauth.getAccessToken(
                 {
-                    grant_type: "code",
+                    grantType: "code",
                     code: "DUMMYCODE",
-                    redirect_uri: "https://heyhey.com",
+                    redirectURI: "https://heyhey.com",
                 },
                 (error, result) => {
                     try {
