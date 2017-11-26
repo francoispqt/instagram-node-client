@@ -8,5 +8,8 @@ const versions = require("./versions")
 
 // run all tests for each versions
 return Object.keys(versions).forEach(v => {
-    return versions[v]()
+    describe("Instagram Client", function() {
+        this.timeout(20000)
+        return versions[v]()
+    })
 })

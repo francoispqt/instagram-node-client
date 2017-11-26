@@ -7,7 +7,8 @@ const testUtils = require("../../../../utils/test_utils")
 const expect = chai.expect
 
 module.exports = Client => {
-    describe("#subscriptions.create", () => {
+    describe("#subscriptions.create", function() {
+        this.timeout(20000)
         it("Calls the api with the right parameters", done => {
             Client.subscriptions.create({
                 object: "user",

@@ -121,7 +121,8 @@ module.exports = function() {
 
     // Client tests
     // Test the client creation
-    describe("#Client.get", () => {
+    describe("#Client.get", function() {
+        this.timeout(20000)
         testUtils.bootstrapTest(Client)
         it("Should call the api with the right parameters", done => {
             Client.get("/users/234961553", {

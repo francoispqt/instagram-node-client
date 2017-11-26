@@ -7,7 +7,8 @@ const testUtils = require("../../../../utils/test_utils")
 const expect = chai.expect
 
 module.exports = Client => {
-    describe("#locations.getByName", () => {
+    describe("#locations.getByName", function() {
+        this.timeout(20000)
         testUtils.bootstrapTest(Client)
         it("Calls the api with the right parameters - Promise syntax", done => {
             Client.locations
@@ -76,7 +77,8 @@ module.exports = Client => {
         })
     })
 
-    describe("#locations.getMediaRecent", () => {
+    describe("#locations.getMediaRecent", function() {
+        this.timeout(20000)
         testUtils.bootstrapTest(Client)
         it("Calls the api with the right parameters - Promise syntax", done => {
             Client.locations
@@ -140,7 +142,8 @@ module.exports = Client => {
         })
     })
 
-    describe("#locations.search", () => {
+    describe("#locations.search", function() {
+        this.timeout(20000)
         testUtils.bootstrapTest(Client)
         it("Calls the api with the right parameters - Promise syntax", done => {
             Client.locations
