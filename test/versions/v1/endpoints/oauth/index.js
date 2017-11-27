@@ -48,33 +48,54 @@ module.exports = Client => {
             )
         })
 
-        it("Throws an error if no tagName is provided - Promise syntax", done => {
+        it("Throws an error if no redirectURI is provided - Promise syntax", done => {
             testUtils.stubApiRequest(Client)
-            Client.tags
-                .getByName(null, {})
-                .then(() => {
-                    done(new Error("Should not be called"))
+            Client.oauth
+                .getAccessToken({
+                    grantType: "code",
+                    code: "DUMMYCODE",
                 })
                 .catch(error => {
                     expect(error).to.be.an.instanceof(Error)
                     expect(error.message).to.be.equal(
-                        "You must provide a tag name"
+                        "You must provide a redirect URI"
                     )
                     done()
                 })
         })
 
-        it("Throws an error if no tagName is provided - Callback syntax", done => {
+        it("Throws an error if no redirectURI is provided - Callback syntax", done => {
             testUtils.stubApiRequest(Client)
-            Client.tags
-                .getByName(null, {})
-                .then(() => {
-                    done(new Error("Should not be called"))
+            Client.oauth.getAccessToken(
+                {
+                    grantType: "code",
+                    code: "DUMMYCODE",
+                },
+                (error, result) => {
+                    try {
+                        expect(error).to.be.an.instanceof(Error)
+                        expect(error.message).to.be.equal(
+                            "You must provide a redirect URI"
+                        )
+                        done()
+                    } catch (error) {
+                        done(error)
+                    }
+                }
+            )
+        })
+
+        it("Throws an error if no code is provided - Promise syntax", done => {
+            testUtils.stubApiRequest(Client)
+            Client.oauth
+                .getAccessToken({
+                    grantType: "code",
+                    redirectURI: "https://someredirecturi.com",
                 })
                 .catch(error => {
                     expect(error).to.be.an.instanceof(Error)
                     expect(error.message).to.be.equal(
-                        "You must provide a tag name"
+                        "You must provide a code"
                     )
                     done()
                 })
